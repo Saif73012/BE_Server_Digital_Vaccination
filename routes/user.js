@@ -27,7 +27,7 @@ router.get("/:id", async  (req,res)=> {
     }
     console.log("user/:id router GETCALL done");
 })
-
+/* 
 router.post("/", async (req,res) => {
     console.log("user router PostCALL");
     const user = new User({
@@ -45,7 +45,7 @@ router.post("/", async (req,res) => {
         res.status(403).json({error});
     }
     console.log("user router PostCALL done");
-})
+}) */
 
 router.put("/:id", async (req,res) => {
     console.log("Update User by ID router PUTCALL")

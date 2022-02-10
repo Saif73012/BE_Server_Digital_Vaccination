@@ -4,7 +4,7 @@ var jwt = require('jsonwebtoken')
 const hash = require('./hash')
 const patientController = require("../controller/patientController")
 const User = require("../models/users.model");
-const Pateint = require("../models/patient.model");
+const Patient = require("../models/patient.model");
 
 const userController = require("../controller/userController")
  // anpassen ----> an das aktuelle model
@@ -48,6 +48,44 @@ var patientControler = require('../routes/patient') */
 
 
 var router = express.Router()
+
+router.post("/user", async (req,res) => {
+  console.log("user router PostCALL");
+  const user = new User({
+      username: req.body.username,
+      password: req.body.password,
+      email: req.body.email,
+      isDoctor:req.body.isDoctor,
+      isAdmin:req.body.isAdmin,
+      isCheckedByAdmin:req.body.isCheckedByAdmin,
+  });
+  try {
+      let result = await userController.createUser(user);
+      res.status(200).json(result)
+  } catch (error) {
+      res.status(403).json({error});
+  }
+  console.log("user router PostCALL done");
+})
+
+router.post("/patient", async (req,res) => {
+  console.log("user router PostCALL");
+
+  const patient = new Patient({
+      username: req.body.username,
+      password: req.body.password,
+      email: req.body.email,
+  });
+  try {
+      let result = await patientController.createPatient(patient);
+  res.status(200).json(result)
+  } catch (error) {
+      res.status(403).json({error});
+  }  
+  console.log("user router PostCALL done");
+ 
+
+})
 
 router.get('/', async function (req, res) {
   var user;

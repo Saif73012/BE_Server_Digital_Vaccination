@@ -32,7 +32,7 @@ router.get("/:id", async  (req,res)=> {
     
 })
 
-
+/* 
 router.post("/", async (req,res) => {
     console.log("user router PostCALL");
 
@@ -50,7 +50,7 @@ router.post("/", async (req,res) => {
     console.log("user router PostCALL done");
    
 
-})
+}) */
 
 
 
