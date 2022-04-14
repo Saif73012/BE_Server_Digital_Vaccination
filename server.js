@@ -2,6 +2,7 @@ const express = require("express")
 const bodyParser = require("body-parser")
 const mongoose= require("mongoose")
 require('dotenv').config()
+const cors = require("cors")
 const User = require("./models/users.model");
 const app = express();
 var jwt = require('express-jwt');
@@ -57,6 +58,9 @@ then use flutter and connect the data
 2. look up tut -> mongoDB into flutter and use the tutorial to follow up
 
 3. Use Firebase und try it via tuts or blogposts tuts  */
+
+//installing cors for the BE
+app.use(cors());
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }))
