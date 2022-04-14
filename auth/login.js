@@ -87,7 +87,7 @@ router.post("/patient", async (req,res) => {
 
 })
 
-router.get('/', async function (req, res) {
+router.post('/', async function (req, res) {
   var user;
   var searchdoc = await User.findOne({ email: req.body.email }).exec();
   var searchpatient = await Patient.findOne({ email: req.body.email }).exec();
