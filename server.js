@@ -94,7 +94,7 @@ app.use('/token', jwt({ secret: process.env.TOKEN_KEY ,algorithms: ['HS256']}))
 
 var loginRouter =  require("./auth/login");
 
-app.use('/login', loginRouter)
+app.use('/login',patientMiddleware,entryMiddleware, loginRouter)
 /* app.use('/login', jwt({ secret: process.env.JWT_SECRET ,algorithms: ['HS256']})) */
 
 

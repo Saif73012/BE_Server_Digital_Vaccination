@@ -89,28 +89,27 @@ router.post("/patient", async (req,res) => {
 
 router.post('/', async function (req, res) {
   var user;
+  var pw;
   var searchdoc = await User.findOne({ email: req.body.email }).exec();
   var searchpatient = await Patient.findOne({ email: req.body.email }).exec();
   var searchpatient2 = await Patient.findOne({ username: req.body.username }).exec();
   if(searchdoc){
     /* console.log('doc: ',searchdoc) */
     user = searchdoc
+    pw = searchdoc.password;
   }
   else if(searchpatient){
     /* console.log('patient: ',searchpatient) */
     user = searchpatient
+    pw = searchdoc.password;
   }
   else if(searchpatient2){
     user = searchpatient2
+    pw = searchdoc.password;
   }
   else{
     user = null;
   }
-if(user!==null){
-  var pw = user.password;
-  /* console.log(pw);
-  console.log(req.body.password); */
-}
 if(user === null){
   res.status(403).send({success: false, msg: 'Authentication Failed, User not found'})
 }
