@@ -3,6 +3,8 @@ const jwt = require('jsonwebtoken')
 
 const patientController = require("../controller/patientController")
 const entryController = require("../controller/entryController")
+const User = require("../models/users.model");
+const Patient = require("../models/patient.model");
 
 module.exports= async function middlewarePatient (req,res,next) {
    
@@ -49,14 +51,18 @@ module.exports= async function middlewarePatient (req,res,next) {
         next();
     }
     const postMiddleware = async (req,next)=> {
-        console.log("create call");
         //pw
         let pw = req.body.password;
         let email = req.body.email;
+
+        var searchdoc = await User.findOne({ email: email }).exec();
+  var searchpatient = await Patient.findOne({ email: email }).exec();
+  if(!(searchdoc ||searchpatient)){
         if(pw != undefined){
             pw = await hash.generate(pw);
             req.body.password = pw;
         }
+    }
       /*   //jwt token
         const token = jwt.sign(
             { user_id: req.body.user._id, email },
