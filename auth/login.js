@@ -101,11 +101,11 @@ router.post('/', async function (req, res) {
   else if(searchpatient){
     /* console.log('patient: ',searchpatient) */
     user = searchpatient
-    pw = searchdoc.password;
+    pw = searchpatient.password;
   }
   else if(searchpatient2){
     user = searchpatient2
-    pw = searchdoc.password;
+    pw = searchpatient2.password;
   }
   else{
     user = null;
@@ -115,7 +115,6 @@ if(user === null){
 }
 else {
   var isPw = await hash.compare(req.body.password, pw);
-  /* console.log(isPw) */
           if (isPw){ 
             /* console.log('pw right') */
             const token = jwt.sign(
