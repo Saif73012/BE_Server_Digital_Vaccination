@@ -52,7 +52,7 @@ module.exports= async function middlewarePatient (req,res,next) {
     }
     const postMiddleware = async (req,next)=> {
         //pw
-        let pw = req.body.password;
+       /*  let pw = req.body.password;
         let email = req.body.email;
 
         var searchdoc = await User.findOne({ email: email }).exec();
@@ -62,7 +62,7 @@ module.exports= async function middlewarePatient (req,res,next) {
             pw = await hash.generate(pw);
             req.body.password = pw;
         }
-    }
+    } */
       /*   //jwt token
         const token = jwt.sign(
             { user_id: req.body.user._id, email },

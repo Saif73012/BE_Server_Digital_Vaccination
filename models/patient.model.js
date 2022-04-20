@@ -32,4 +32,14 @@ const Patient = Schema({
 
 })
 
+Patient.pre("save", async  function(next){
+    try {
+        let hashedpw = await hash.generate(this.password)
+        this.password = hashedpw
+        next()
+    } catch (error) {
+        next(error)
+    }
+})
+
 module.exports = mongoose.model("Pateint",Patient);
