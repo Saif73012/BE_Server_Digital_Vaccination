@@ -25,11 +25,6 @@ const Patient = Schema({
         type: Schema.Types.ObjectId,
         ref: "Entry",
     }],
-    token: { 
-        type: String 
-    }
-    
-
 })
 
 Patient.pre("save", async  function(next){

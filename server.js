@@ -10,7 +10,6 @@ var patientMiddleware = require("./middleware/patient_middleware")
 var entryMiddleware = require("./middleware/entry_middleware")
 var jwtMiddleware = require("./middleware/jwt_middleware");
 /*  
-TODO: 
 
 bodyParser -> depricated version undo 
 create collection for mongoDB --> done 
@@ -87,13 +86,7 @@ app.use("/entry",jwtMiddleware,entryMiddleware,entryRoute)
 // create more routes
 
 //authentication
-var tokenRouter =  require("./auth/token")
-app.use('/token', tokenRouter)
-app.use('/token', jwt({ secret: process.env.TOKEN_KEY ,algorithms: ['HS256']}))
-
-
 var loginRouter =  require("./auth/login");
-
 app.use('/login',patientMiddleware,entryMiddleware, loginRouter)
 /* app.use('/login', jwt({ secret: process.env.JWT_SECRET ,algorithms: ['HS256']})) */
 

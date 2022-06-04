@@ -1,5 +1,6 @@
 const express = require("express");
 const patientcontroller = require('../controller/patientController')
+const entrycontroller = require('../controller/entryController')
 const Patient = require("../models/patient.model");
 
 var router = express.Router();
@@ -18,6 +19,32 @@ router.get("/", async  (req,res)=> {
     
 })
 
+router.get("/:id/filtered", async  (req,res)=>{
+    
+    const PatientID = req.params.id;
+    console.log("Entry/:id filtered router GETCALL");
+    try {
+        
+        let result = await entrycontroller.getSpesficEntryfiltered(PatientID,true);
+        res.status(200).json(result)
+    } catch (error) {
+        res.status(403).json({error});
+    }
+    console.log("Entry/:id filteredrouter GETCALL done");
+})
+
+
+router.get("/:id/allentries", async  (req,res)=>{
+    const PatientID = req.params.id;
+    console.log("Entry/:id allentries router GETCALL");
+    try {
+        let result = await entrycontroller.getSpesficEntryfromPatientId(PatientID,true);
+        res.status(200).json(result)
+    } catch (error) {
+        res.status(403).json({error});
+    }
+    console.log("Entry/:id allentries router GETCALL done");
+})
 
 router.get("/:id", async  (req,res)=> {
     const PatientID = req.params.id;

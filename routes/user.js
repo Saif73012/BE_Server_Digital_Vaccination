@@ -3,7 +3,7 @@ const User = require("../models/users.model");
 const usercontroller = require('../controller/userController')
 var router = express.Router();
 
-// TODO: 
+
 
 router.get("/", async  (req,res)=> {
     console.log("user router GETCALL");
@@ -27,16 +27,16 @@ router.get("/:id", async  (req,res)=> {
     }
     console.log("user/:id router GETCALL done");
 })
-/* 
+
 router.post("/", async (req,res) => {
     console.log("user router PostCALL");
     const user = new User({
         username: req.body.username,
-        password: req.body.password,
-        email: req.body.email,
-        isDoctor:req.body.isDoctor,
-        isAdmin:req.body.isAdmin,
-        isCheckedByAdmin:req.body.isCheckedByAdmin,
+      password: req.body.password,
+      email: req.body.email,
+      adress:req.body.adress,
+      officeName:req.body.officeName,
+      isCheckedByAdmin:req.body.isCheckedByAdmin,
     });
     try {
         let result = await usercontroller.createUser(user);
@@ -45,7 +45,7 @@ router.post("/", async (req,res) => {
         res.status(403).json({error});
     }
     console.log("user router PostCALL done");
-}) */
+})
 
 router.put("/:id", async (req,res) => {
     console.log("Update User by ID router PUTCALL")

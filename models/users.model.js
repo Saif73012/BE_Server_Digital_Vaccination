@@ -17,23 +17,18 @@ const User = Schema({
         type: String,
         required: true,
     },
-    isDoctor:{
-        type: Boolean,
+    officeName:{
+        type: String,
         required: true,
-        default: false,
     },
-    isAdmin:{
-        type: Boolean,
+    adress:{
+        type: String,
         required: true,
-        default: false,
     },
     isCheckedByAdmin:{
         type: Boolean,
         required: true,
         default: false,
-    },
-    token: { 
-        type: String 
     }
 })
 

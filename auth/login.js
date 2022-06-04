@@ -55,8 +55,8 @@ router.post("/user", async (req,res) => {
       username: req.body.username,
       password: req.body.password,
       email: req.body.email,
-      isDoctor:req.body.isDoctor,
-      isAdmin:req.body.isAdmin,
+      adress:req.body.adress,
+      officeName:req.body.officeName,
       isCheckedByAdmin:req.body.isCheckedByAdmin,
   });
   try {
@@ -121,7 +121,7 @@ else {
               { user:user },
               process.env.TOKEN_KEY,
               {
-                expiresIn: "5min",
+                expiresIn: "2h",
               }, { algorithm: 'RS256'}
             );
             res.json({success: true, token: token})
