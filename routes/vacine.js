@@ -32,6 +32,7 @@ router.post("/", async (req,res) => {
         name: req.body.name,
         abbrevation: req.body.abbrevation,
         information: req.body.information,
+        url: req.body.url,
     });
     try {
         let result = await vacinecontroller.createVacine(vacine);

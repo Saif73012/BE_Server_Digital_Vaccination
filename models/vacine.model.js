@@ -16,6 +16,10 @@ const Vacine = Schema({
     information:{
         type: String,
         required:true,
+    },
+    url:{
+        type: String,
+        required:true,
     }
 })
 
