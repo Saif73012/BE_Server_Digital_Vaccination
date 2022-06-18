@@ -45,8 +45,6 @@ try {
     res.status(403).json({error});
 } */
 }
-
-
 async function createPatient(patient){
     var result = await patient.save()
     return result
